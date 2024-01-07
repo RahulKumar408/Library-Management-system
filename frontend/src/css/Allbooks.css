@@ -1,0 +1,12 @@
+.books-page{
+  width: 100%;
+  background-color: rgb(235, 233, 228);
+}
+
+.books{
+  margin: 60px auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+  padding: 50px 120px;
+}
