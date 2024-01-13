@@ -2,7 +2,7 @@
   display: grid;
   place-items: center;
   height: 100vh;
-  background-color: wheat;
+  background-color: #51515b;
   position: relative;
 }
 
@@ -12,7 +12,7 @@
   height: 90vh;
   margin: 60px auto;
   display: flex;
-  background-color: #fefaf5;
+  background-color: #f4f4fb;
   border-radius: 15px;
   -webkit-box-shadow: 0px 3px 5px -1px rgba(0, 0, 0, 0.2),
     0px 6px 10px 0px rgba(0, 0, 0, 0.14), 0px 1px 18px 0px rgba(0, 0, 0, 0.12);
@@ -23,7 +23,7 @@
 /* Sidebar */
 
 .dashboard-options {
-  background-color: rgb(24, 33, 62);
+  background-color: rgb(16,25,13);
   color: wheat;
   display: flex;
   flex-direction: column;
@@ -36,7 +36,7 @@
 .dashboard-logo {
   margin-top: 50px;
   margin-bottom: 50px !important;
-  color: rgb(234, 68, 74);
+  color: rgb(49, 51, 226);
   font-size: 30px;
   font-weight: 800;
   text-align: center;
@@ -45,8 +45,8 @@
 .dashboard-option {
   text-decoration: none;
   padding: 15px;
-  border-bottom: 0.5px solid salmon;
-  border-top: 1px solid rgb(234, 68, 74, 0.5);
+  border-bottom: 0.5px solid rgb(49, 51, 226);
+  border-top: 1px solid rgb(49, 51, 226);
   color: #ffff;
   font-weight: 700;
   text-align: left;
@@ -56,15 +56,15 @@
 }
 
 .dashboard-option:hover {
-  color: rgb(234, 68, 74);
-  border-left: 5px solid rgb(234, 68, 74);
+  color: rgb(49, 51, 226);
+  border-left: 5px solid rgb(49, 51, 226);
   transition: all 0.5s ease;
   background-color: #ddd;
 }
 
 .dashboard-option.clicked {
-  color: rgb(234, 68, 74);
-  border-left: 5px solid rgb(234, 68, 74);
+  color: rgb(49, 51, 226);
+  border-left: 5px solid rgb(49, 51, 226);
   transition: all 0.5s ease;
   background-color: #ddd;
 }
@@ -203,7 +203,7 @@
 .transaction-form-submit {
   padding: 8px 10px;
   border: 2px solid wheat;
-  background-color: rgb(234, 68, 74);
+  background-color: rgb(49, 51, 226);
   color: wheat;
   font-weight: 600;
   margin-top: 15px;
@@ -214,13 +214,13 @@
 .AddUser-submit:hover,
 .transaction-form-submit:hover {
   background-color: wheat;
-  color: rgb(234, 68, 74);
-  border: 2px solid rgb(234, 68, 74);
+  color: rgb(49, 51, 226);
+  border: 2px solid rgb(49, 51, 226);
   transition: all ease 0.5s;
 }
 
 .required-field {
-  color: red;
+  color: rgb(49, 51, 226);
 }
 
 .dashboard-addbooks-content,

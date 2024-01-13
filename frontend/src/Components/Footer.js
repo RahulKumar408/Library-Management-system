@@ -14,9 +14,7 @@ function Footer() {
                     <div className="contact-details">
                         <h1>Contact Us</h1>
                         <p>Librarian</p>
-                        <p>Government School</p>
-                        <p>Visakhapatnam-530041</p>
-                        <p>Andhra Pradesh</p>
+                        <p>IITGN</p>
                         <p>India</p>
                         <p><b>Email:</b>example@gmail.com</p>
                     </div>
@@ -29,13 +27,12 @@ function Footer() {
                     </div>
                     <div className='librarian-details'>
                         <h1>Librarian</h1>
-                        <p>Name</p>
-                        <p>Education</p>
-                        <p>Contact: +91 9123456787</p>
+                        <p>Name: _______</p>
+                        <p>Education: ________  </p>
+                        <p>Contact: +91 00000000000</p>
                     </div>
                 </div>
                 <div className="contact-social" >
-                    <a href='#home' className='social-icon'><TwitterIcon style={{ fontSize: 40,color:"rgb(235, 233, 228)"}} /></a>
                     <a href='#home' className='social-icon'><LinkedInIcon style={{ fontSize: 40,color:"rgb(235, 233, 228)"}} /></a>
                     <a href='#home' className='social-icon'><TelegramIcon style={{ fontSize: 40,color:"rgb(235, 233, 228)"}} /></a>
                     <a href='#home' className='social-icon'><InstagramIcon style={{ fontSize: 40,color:"rgb(235, 233, 228)"}} /></a>

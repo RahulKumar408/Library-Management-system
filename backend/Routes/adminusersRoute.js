@@ -106,6 +106,7 @@ adminusersRoute.get('/', asyncHandler(async(req, res)=>{
 
 }));
 
+// get admin detail
 adminusersRoute.get('/:Id',authMiddleware, adminMiddleware, asyncHandler(async (req, res) => {
   const { Id } = req.params;
 

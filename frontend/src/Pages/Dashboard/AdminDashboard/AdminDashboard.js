@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import "./AdminDashboard.css"
 import AddTransaction from './Components/AddTransaction'
 import AddUser from './Components/AddUser'
@@ -18,6 +18,7 @@ import CloseIcon from '@material-ui/icons/Close';
 import AccountBoxIcon from '@material-ui/icons/AccountBox';
 import AssignmentReturnIcon from '@material-ui/icons/AssignmentReturn';
 import PowerSettingsNewIcon from '@material-ui/icons/PowerSettingsNew';
+import { AuthContext } from "../../../Context/AuthContext";
 
 
 /* Semantic UI Dropdown Styles Import */
@@ -31,11 +32,34 @@ function AdminDashboard() {
     const [active, setActive] = useState("addbooks")
     const [sidebar, setSidebar] = useState(false)
 
+    const API_URL = process.env.REACT_APP_API_URL;
+    const { user } = useContext(AuthContext);
+    const jwtToken = user.token;
+    // console.log("Printing user")
+    // console.log(user)
+
     /* Logout Function*/
     const logout = () => {
         localStorage.removeItem("user");
         window.location.reload();
     }
+
+    // Get user detail
+    // useEffect(() => {
+    //     const getuserDetails = async () => {
+    //         try {
+    //             const response = await axios.get(
+    //                 API_URL + "api/users/" + user._id, {
+    //                 headers: { Authorization: jwtToken },
+    //             }
+    //             );
+    //             setUserDetails(response.data);
+    //         } catch (err) {
+    //             console.log("Error in fetching the member details");
+    //         }
+    //     };
+    //     getuserDetails();
+    // }, [API_URL]);
 
     return (
         <div className="dashboard">
@@ -55,7 +79,7 @@ function AdminDashboard() {
                     <p className={`dashboard-option ${active === "profile" ? "clicked" : ""}`} onClick={() => { setActive("profile"); setSidebar(false) }}><AccountCircleIcon className='dashboard-option-icon' /> Profile</p>
                     <p className={`dashboard-option ${active === "addbook" ? "clicked" : ""}`} onClick={() => { setActive("addbook"); setSidebar(false) }}><BookIcon className='dashboard-option-icon' />Add Book</p>
                     <p className={`dashboard-option ${active === "addtransaction" ? "clicked" : ""}`} onClick={() => { setActive("addtransaction"); setSidebar(false) }}><ReceiptIcon className='dashboard-option-icon' /> Add Transaction </p>
-                    <p className={`dashboard-option ${active === "AddUser" ? "clicked" : ""}`} onClick={() => { setActive("AddUser"); setSidebar(false) }}><PersonAddIcon className='dashboard-option-icon' /> Add User </p> 
+                    <p className={`dashboard-option ${active === "AddUser" ? "clicked" : ""}`} onClick={() => { setActive("AddUser"); setSidebar(false) }}><PersonAddIcon className='dashboard-option-icon' /> Add User </p>
                     <p className={`dashboard-option ${active === "GetBooks" ? "clicked" : ""}`} onClick={() => { setActive("GetBooks"); setSidebar(false) }}><AccountBoxIcon className='dashboard-option-icon' /> Get Books </p>
                     {/* <p className={`dashboard-option ${active === "AddUser" ? "clicked" : ""}`} onClick={() => { setActive("AddUser"); setSidebar(false) }}><PersonAddIcon className='dashboard-option-icon' /> Add Member </p> */}
                     <p className={`dashboard-option ${active === "returntransaction" ? "clicked" : ""}`} onClick={() => { setActive("returntransaction"); setSidebar(false) }}><AssignmentReturnIcon className='dashboard-option-icon' /> Return </p>
@@ -82,6 +106,7 @@ function AdminDashboard() {
                         <AllTransaction />
                     </div>
                 </div>
+
             </div>
         </div>
     )
