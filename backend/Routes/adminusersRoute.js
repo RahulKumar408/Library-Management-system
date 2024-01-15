@@ -79,7 +79,6 @@ adminusersRoute.put('/update', authMiddleware, adminMiddleware, asyncHandler(asy
 // Delete admin
 adminusersRoute.delete('/:adminId',authMiddleware, adminMiddleware, asyncHandler(async (req, res) => {
   const { adminId } = req.params;
-
   const deletedadmin = await Adminuser.findByIdAndDelete(adminId);
 
   if (deletedadmin) {

@@ -76,8 +76,8 @@ function AddTransaction() {
             }
 
         }
-        getTransactions()
-    }, [API_URL]);
+        getTransactions();
+    }, [API_URL, jwtToken]);
 
 
     return (

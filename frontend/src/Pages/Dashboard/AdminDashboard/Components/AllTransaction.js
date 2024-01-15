@@ -1,11 +1,10 @@
 import React, { useContext, useEffect, useState } from 'react'
 import "../AdminDashboard.css"
 import axios from "axios"
-import { Dropdown } from 'semantic-ui-react'
 import '../../MemberDashboard/MemberDashboard.css'
 import { AuthContext } from '../../../../Context/AuthContext'
 import EditIcon from '@material-ui/icons/Edit'
-
+import Swal from 'sweetalert2';
 
 function AllTransaction() {
 
@@ -15,28 +14,47 @@ function AllTransaction() {
     const [isLoading, setIsLoading] = useState(false);
 
     const [allTransactions, setAllTransactions] = useState([]);
-    const [ExecutionStatus, setExecutionStatus] = useState(null) /* For triggering the tabledata to be updated */
-
-    const [allMembersOptions, setAllMembersOptions] = useState(null)
-    const [borrowerId, setBorrowerId] = useState(null)
 
     // handle edit
     const handleEdit = async (trasactionId, transType) => {
-        setIsLoading(true);
+
         try {
-            await axios.patch(`${API_URL}api/library-transactions/${trasactionId}`, { availability: transType}, {
-                headers: { Authorization: jwtToken },
+            setIsLoading(true);
+            const result = await Swal.fire({
+                title: "Are you sure?",
+                text: "You want to change alter transaction type.",
+                icon: "question",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Yes"
             });
-            // Refresh the book list after updating availability
-            const response = await axios.get(API_URL + "api/library-transactions", {
-                headers: { Authorization: jwtToken },
-            });
-            setAllTransactions(response.data)
-            alert("Transactions type updated");
+    
+            if (result.isConfirmed) {
+                await axios.patch(`${API_URL}api/library-transactions/${trasactionId}`, { availability: transType}, {
+                    headers: { Authorization: jwtToken },
+                });
+                // Refresh the book list after updating availability
+                const response = await axios.get(API_URL + "api/library-transactions", {
+                    headers: { Authorization: jwtToken },
+                });
+                setAllTransactions(response.data)
+                Swal.fire({
+                    title: "Updated!",
+                    text: "Book avaibality has been altered.",
+                    icon: "success"
+                });
+            }
         } catch (error) {
             console.error('Error updating transaction type:', error);
+            Swal.fire({
+                title: "Updated!",
+                text: error,
+                icon: "success"
+            });
+        } finally {
+            setIsLoading(false);
         }
-        setIsLoading(false);
     };
 
 
@@ -48,14 +66,13 @@ function AllTransaction() {
                     headers: { Authorization: jwtToken },
                 })
                 setAllTransactions(response.data)
-                console.log("Okay")
             }
             catch (err) {
                 console.log(err)
             }
         }
-        getAllTransactions()
-    }, [API_URL])
+        getAllTransactions();
+    }, [API_URL, jwtToken]);
 
     return (
         <div>

@@ -1,9 +1,10 @@
-import React, {useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import axios from 'axios';
 import moment from 'moment';
 import DeleteIcon from '@material-ui/icons/Delete';
 import EditIcon from '@material-ui/icons/Edit';
 import { AuthContext } from '../../../../Context/AuthContext';
+import Swal from 'sweetalert2'
 
 function GetBooks() {
     const API_URL = process.env.REACT_APP_API_URL;
@@ -14,36 +15,83 @@ function GetBooks() {
     const [allBooks, setAllBooks] = useState([]);
 
     const handleDelete = async (bookId) => {
-        setIsLoading(true);
-
         try {
-            await axios.delete(`${API_URL}api/books/${bookId}`, {
-                headers: { Authorization: jwtToken },
+            setIsLoading(true);
+            const result = await Swal.fire({
+                title: "Are you sure?",
+                text: "You won't be able to revert this!",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Yes, delete it!"
             });
-            // Refresh the book list after deletion
-            const response = await axios.get(API_URL + "api/books");
-            setAllBooks(response.data);
-            alert("Book Deleted")
+    
+            if (result.isConfirmed) {
+                const deleteRes = await axios.delete(`${API_URL}api/books/${bookId}`, {
+                    headers: { Authorization: jwtToken },
+                });
+                // Refresh the book list after deletion
+                const response = await axios.get(API_URL + "api/books");
+                setAllBooks(response.data);
+                if(deleteRes.status === 200){
+                    Swal.fire({
+                        title: "Deleted!",
+                        text: "Book has been deleted.",
+                        icon: "success"
+                    });
+                }
+                
+            }
         } catch (error) {
             console.error('Error deleting book:', error);
+            Swal.fire({
+                title: "Error!",
+                text: error,
+                icon: "error"
+            });
+        } finally {
+            setIsLoading(false);
         }
-        setIsLoading(false);
     };
+    
 
     const handleUpdateAvailability = async (bookId, newAvailability) => {
-        setIsLoading(true);
         try {
-            await axios.patch(`${API_URL}api/books/${bookId}`, { availability: newAvailability }, {
-                headers: { Authorization: jwtToken },
+            setIsLoading(true);
+            const result = await Swal.fire({
+                title: "Are you sure?",
+                text: "You want to change book avaibality.",
+                icon: "question",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Yes"
             });
-            // Refresh the book list after updating availability
-            const response = await axios.get(API_URL + "api/books");
-            setAllBooks(response.data);
-            alert("Book availability updated");
+    
+            if (result.isConfirmed) {
+                await axios.patch(`${API_URL}api/books/${bookId}`, { availability: newAvailability }, {
+                    headers: { Authorization: jwtToken },
+                });
+                // Refresh the book list after updating availability
+                const response = await axios.get(API_URL + "api/books");
+                setAllBooks(response.data);
+                Swal.fire({
+                    title: "Updated!",
+                    text: "Book avaibality has been altered.",
+                    icon: "success"
+                });
+            }
         } catch (error) {
-            console.error('Error updating availability:', error);
+            console.error('Error deleting book:', error);
+            Swal.fire({
+                title: "Updated!",
+                text: error,
+                icon: "success"
+            });
+        } finally {
+            setIsLoading(false);
         }
-        setIsLoading(false);
     };
 
     // Fetched all books

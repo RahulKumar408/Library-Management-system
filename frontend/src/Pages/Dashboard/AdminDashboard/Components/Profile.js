@@ -1,15 +1,12 @@
-import React, { useContext, useEffect, useState } from 'react';
-import axios from 'axios';
+import React, { useContext} from 'react';
+// import axios from 'axios';
 import { AuthContext } from '../../../../Context/AuthContext';
 import "../../MemberDashboard/MemberDashboard.css";
 import profile from '../../../../images/profile.png';
 
 function Profile() {
-  const API_URL = process.env.REACT_APP_API_URL;
+  // const API_URL = process.env.REACT_APP_API_URL;
   const { user } = useContext(AuthContext);
-
-  console.log("printign user", user);
-
 
   return (
     <div>

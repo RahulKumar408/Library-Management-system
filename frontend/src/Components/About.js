@@ -12,21 +12,11 @@ function About() {
                 </div>
                 <div>
                     <p className="about-text">
-                        Lorem Ipsum is simply dummy text of the printing and typesetting 
-                        industry. Lorem Ipsum has been the industry's standard dummy text 
-                        ever since the 1500s, when an unknown printer took a galley of type 
-                        and scrambled it to make a type specimen book. It has survived not 
-                        only five centuries.<br/>
+                    Discover a world of knowledge and imagination at our library. Dive into a vast collection of books that span various genres, from classic literature to contemporary fiction, non-fiction, and everything in between. Our library is a haven for book lovers, providing a curated selection of literary treasures for readers of all ages.<br/>
                         <br/>
-                        Contrary to popular belief, Lorem Ipsum is not simply random text. 
-                        It has roots in a piece of classical Latin literature from 45 BC, 
-                        making it over 2000 years old. Richard McClintock, a Latin professor 
-                        at Hampden-Sydney College in Virginia, looked up one of the more obscure 
-                        Latin words, consectetur, from a Lorem Ipsum passage.<br/>
+                        Whether you're seeking adventure, romance, mystery, or knowledge, our library has something for everyone. Immerse yourself in captivating stories, learn from insightful non-fiction works, and explore the wonders of different worlds through our carefully curated bookshelves.<br/>
                         <br/>
-                        There are many variations of passages of Lorem Ipsum available, 
-                        but the majority have suffered alteration in some form, by injected 
-                        humour<br/>
+                        Our library is not just a collection of books; it's a hub for lifelong learning. Discover educational resources, explore diverse perspectives, and embark on a journey of continuous intellectual growth. Attend book clubs, author events, and participate in enriching activities that foster a vibrant reading community.<br/>
                         <br/>
                         Your suggestions for improvement are always welcome!
                     </p>

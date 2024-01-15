@@ -42,26 +42,21 @@ function MemberDashboard() {
         console.log("Error in fetching the member details");
       }
     };
-    getuserDetails();
-  }, [API_URL, user]);
-
-
-  /* Getting all active transactions */
-  useEffect(() => {
     const getAllTransactions = async () => {
       try {
         const response = await axios.get(API_URL + "api/library-transactions", {
           headers: { Authorization: jwtToken },
         })
         setAllTransactions(response.data)
-        console.log("Okay")
       }
       catch (err) {
         console.log(err)
       }
     }
-    getAllTransactions()
-  }, [API_URL])
+    getuserDetails();
+    getAllTransactions();
+  }, [API_URL, jwtToken, user._id]);
+
 
   return (
     <div className="dashboard">

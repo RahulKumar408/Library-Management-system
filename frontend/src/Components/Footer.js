@@ -1,7 +1,6 @@
 import React from 'react'
 import '../css/Footer.css'
 
-import TwitterIcon from '@material-ui/icons/Twitter';
 import LinkedInIcon from '@material-ui/icons/LinkedIn';
 import TelegramIcon from '@material-ui/icons/Telegram';
 import InstagramIcon from '@material-ui/icons/Instagram';

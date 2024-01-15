@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react'
+import React, { useState} from 'react'
 import "./AdminDashboard.css"
 import AddTransaction from './Components/AddTransaction'
 import AddUser from './Components/AddUser'
@@ -18,7 +18,6 @@ import CloseIcon from '@material-ui/icons/Close';
 import AccountBoxIcon from '@material-ui/icons/AccountBox';
 import AssignmentReturnIcon from '@material-ui/icons/AssignmentReturn';
 import PowerSettingsNewIcon from '@material-ui/icons/PowerSettingsNew';
-import { AuthContext } from "../../../Context/AuthContext";
 
 
 /* Semantic UI Dropdown Styles Import */
@@ -29,14 +28,8 @@ document.head.appendChild(styleLink);
 
 function AdminDashboard() {
 
-    const [active, setActive] = useState("addbooks")
-    const [sidebar, setSidebar] = useState(false)
-
-    const API_URL = process.env.REACT_APP_API_URL;
-    const { user } = useContext(AuthContext);
-    const jwtToken = user.token;
-    // console.log("Printing user")
-    // console.log(user)
+    const [active, setActive] = useState("addbooks");
+    const [sidebar, setSidebar] = useState(false);
 
     /* Logout Function*/
     const logout = () => {
